@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Open this ❤️</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- WhatsApp preview -->
+  <meta property="og:title" content="A message for you ❤️">
+  <meta property="og:description" content="Click to see what you mean to me">
+
+  <style>
+    body {
+      background: #0f172a;
+      color: white;
+      font-family: Arial, sans-serif;
+      text-align: center;
+      padding-top: 100px;
+    }
+
+    .box {
+      background: #1e293b;
+      padding: 30px;
+      border-radius: 20px;
+      display: inline-block;
+    }
+
+    button {
+      padding: 10px 20px;
+      border: none;
+      border-radius: 10px;
+      background: #22c55e;
+      color: white;
+      font-size: 16px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="box">
+    <h2>Compiling feelings...</h2>
+    <p id="text">Click run to execute program</p>
+    <button onclick="runLove()">Run Program</button>
+  </div>
+
+  <script>
+    function runLove() {
+      document.getElementById("text").innerHTML =
+        "if (you == in_my_life) { happiness = true; } ❤️ <br><br> I love you. Will you be mine?";
+    }
+  </script>
+
+</body>
+</html>
