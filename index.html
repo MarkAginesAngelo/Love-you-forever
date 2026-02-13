@@ -5,28 +5,29 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Happy Valentine 💖</title>
 <!-- Google Fonts -->
-<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Alex+Brush&family=Poppins:wght@400;500&display=swap" rel="stylesheet">
 <style>
   body {
     margin: 0;
     padding: 0;
     font-family: 'Poppins', sans-serif;
     background: #fff0f5; /* very light pastel pink */
-    height: 100vh;
+    min-height: 100vh;
+    overflow-y: auto; /* allow scrolling */
     display: flex;
     justify-content: center;
     align-items: center;
     text-align: center;
     color: #333;
-    overflow: hidden;
   }
 
   .container {
-    background: rgba(255, 255, 255, 0.85);
-    padding: 50px;
+    background: rgba(255, 255, 255, 0.9);
+    padding: 40px 30px;
     border-radius: 25px;
     max-width: 700px;
     box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    width: 90%;
   }
 
   h1 {
@@ -37,11 +38,18 @@
   }
 
   p {
-    font-family: 'Poppins', sans-serif;
-    font-size: 20px;
-    line-height: 1.7;
+    font-family: 'Alex Brush', cursive;
+    font-size: 22px;
+    line-height: 1.8;
     color: #444;
-    text-align: justify;
+    text-align: center;
+    opacity: 0;
+    animation: fadeInUp 2s forwards;
+  }
+
+  @keyframes fadeInUp {
+    0% { opacity: 0; transform: translateY(20px); }
+    100% { opacity: 1; transform: translateY(0); }
   }
 
   button {
@@ -82,6 +90,7 @@
     max-width: 100%;
     border-radius: 20px;
   }
+
 </style>
 </head>
 <body>
@@ -103,10 +112,10 @@
   <!-- Yes Screen -->
   <div id="yesScreen" class="hidden">
     <h1>To my Sunshine...</h1>
-    <p>
-     I met you and didn’t know why, maybe it was fate, or God from the sky,to teach me what love truly is. Somehow, I fell in love with you without even realizing it. We come from different roots, cultures, and languages, yet our souls understand each other so deeply when we’re together. I didn’t know your hidden past, and I didn’t know our love would last. You left behind the life you knew, and life has shaped your soul a new, Turning broken promises into something true. All the change I see in you makes me want to start a new. 
-   <br>I’m so in love with you.❤️ I LOVE YOU FOREVER ❤️ and EVER!</br>
+    <p id="loveParagraph">
+     I met you and didn’t know why, maybe it was fate, or God from the sky, to teach me what love truly is. Somehow, I fell in love with you without even realizing it. We come from different roots, cultures, and languages, yet our souls understand each other so deeply when we’re together. I didn’t know your hidden past, and I didn’t know our love would last. You left behind the life you knew, and life has shaped your soul a new, Turning broken promises into something true. All the change I see in you makes me want to start a new.<br> I’m so in love with you ❤️ I LOVE YOU FOREVER ❤️ and EVER!</br>
     </p>
+    <button onclick="closePage()">Close 💖</button>
   </div>
 
   <!-- No Screen -->
@@ -115,12 +124,6 @@
     <img src="https://media.giphy.com/media/3o6Zt481isNVuQI1l6/giphy.gif" alt="Heartbroken GIF">
   </div>
 </div>
-
-<!-- Background music -->
-<audio id="bgMusic" loop>
-  <source src="sunshine.mp3" type="audio/mp3">
-  Your browser does not support the audio element.
-</audio>
 
 <script>
 // ---- Floating multicolor hearts ----
@@ -147,10 +150,6 @@ function yesClicked() {
   document.getElementById('questionScreen').classList.add('hidden');
   document.getElementById('yesScreen').classList.remove('hidden');
 
-  // Play background music
-  const music = document.getElementById('bgMusic');
-  music.play();
-
   // Start hearts animation
   setInterval(createHeart, 300);
 }
@@ -159,6 +158,11 @@ function yesClicked() {
 function noClicked() {
   document.getElementById('questionScreen').classList.add('hidden');
   document.getElementById('noScreen').classList.remove('hidden');
+}
+
+// ---- Close Page ----
+function closePage() {
+  window.close();
 }
 </script>
 
