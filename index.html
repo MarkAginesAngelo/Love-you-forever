@@ -5,13 +5,13 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Happy Valentine 💖</title>
 <!-- Google Fonts -->
-<link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@400;500&display=swap" rel="stylesheet">
 <style>
   body {
     margin: 0;
     padding: 0;
-    font-family: 'Roboto', sans-serif;
-    background: #fff0f5; /* very light pastel color */
+    font-family: 'Poppins', sans-serif;
+    background: #fff0f5; /* very light pastel pink */
     height: 100vh;
     display: flex;
     justify-content: center;
@@ -22,7 +22,7 @@
   }
 
   .container {
-    background: rgba(255, 255, 255, 0.8);
+    background: rgba(255, 255, 255, 0.85);
     padding: 50px;
     border-radius: 25px;
     max-width: 700px;
@@ -30,14 +30,14 @@
   }
 
   h1 {
-    font-family: 'Pacifico', cursive;
-    font-size: 40px;
+    font-family: 'Great Vibes', cursive;
+    font-size: 50px;
     margin-bottom: 25px;
     color: #ff4d6d;
   }
 
   p {
-    font-family: 'Roboto', sans-serif;
+    font-family: 'Poppins', sans-serif;
     font-size: 20px;
     line-height: 1.7;
     color: #444;
@@ -115,6 +115,12 @@
   </div>
 </div>
 
+<!-- Background music -->
+<audio id="bgMusic" loop>
+  <source src="sunshine.mp3" type="audio/mp3">
+  Your browser does not support the audio element.
+</audio>
+
 <script>
 // ---- Floating multicolor hearts ----
 function createHeart() {
@@ -139,6 +145,11 @@ function askQuestion() {
 function yesClicked() {
   document.getElementById('questionScreen').classList.add('hidden');
   document.getElementById('yesScreen').classList.remove('hidden');
+
+  // Play background music
+  const music = document.getElementById('bgMusic');
+  music.play();
+
   // Start hearts animation
   setInterval(createHeart, 300);
 }
