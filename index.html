@@ -3,52 +3,72 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>For My Love ❤️</title>
+<title>Happy Valentine 💖</title>
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
 <style>
   body {
     margin: 0;
     padding: 0;
-    font-family: 'Courier New', Courier, monospace;
-    background: linear-gradient(135deg, #ff9a9e, #fad0c4, #fbc2eb);
+    font-family: 'Roboto', sans-serif;
+    background: #fff0f5; /* very light pastel color */
     height: 100vh;
-    overflow: hidden;
     display: flex;
     justify-content: center;
     align-items: center;
-    color: #fff;
     text-align: center;
+    color: #333;
+    overflow: hidden;
   }
 
   .container {
-    background: rgba(0,0,0,0.5);
-    padding: 40px;
-    border-radius: 20px;
+    background: rgba(255, 255, 255, 0.8);
+    padding: 50px;
+    border-radius: 25px;
+    max-width: 700px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
   }
 
-  #message {
+  h1 {
+    font-family: 'Pacifico', cursive;
+    font-size: 40px;
+    margin-bottom: 25px;
+    color: #ff4d6d;
+  }
+
+  p {
+    font-family: 'Roboto', sans-serif;
     font-size: 20px;
-    min-height: 100px;
-    margin-bottom: 20px;
+    line-height: 1.7;
+    color: #444;
+    text-align: justify;
   }
 
   button {
-    padding: 12px 25px;
-    font-size: 18px;
+    padding: 15px 30px;
+    font-size: 20px;
     border: none;
-    border-radius: 12px;
+    border-radius: 15px;
     cursor: pointer;
-    background: #ff4d6d;
+    background: linear-gradient(45deg, #ff6b81, #ff9472);
     color: white;
-    transition: 0.3s;
+    margin: 10px;
+    font-weight: 500;
+    transition: 0.4s;
+    box-shadow: 0 5px 15px rgba(255,105,135,0.4);
   }
 
   button:hover {
-    background: #ff1a3c;
+    transform: scale(1.05);
+    box-shadow: 0 8px 20px rgba(255,105,135,0.6);
+  }
+
+  .hidden {
+    display: none;
   }
 
   .heart {
     position: absolute;
-    color: red;
     font-size: 20px;
     animation: float 4s linear infinite;
   }
@@ -57,62 +77,76 @@
     0% {transform: translateY(0) rotate(0deg);}
     100% {transform: translateY(-100vh) rotate(360deg);}
   }
+
+  img {
+    max-width: 100%;
+    border-radius: 20px;
+  }
 </style>
 </head>
 <body>
 
 <div class="container">
-  <div id="message"></div>
-  <button onclick="showLove()">Run Program 💖</button>
+  <!-- First Screen -->
+  <div id="valentineScreen">
+    <h1>Happy Valentine’s Day 💖</h1>
+    <button onclick="askQuestion()">Next</button>
+  </div>
+
+  <!-- Question Screen -->
+  <div id="questionScreen" class="hidden">
+    <h1>Will you be my Valentine? 💌</h1>
+    <button onclick="yesClicked()">Yes ❤️</button>
+    <button onclick="noClicked()">No 😢</button>
+  </div>
+
+  <!-- Yes Screen -->
+  <div id="yesScreen" class="hidden">
+    <h1>To my Sunshine...</h1>
+    <p>
+      I met you, and I don’t know if it was God’s plan to teach me what love is. Somehow, I fell in love with you without even realizing it. We come from different roots, cultures, and languages, yet our souls understand each other so deeply when we’re together. I didn’t know your hidden past, and I didn’t know our love would last. You left behind the life you knew, and life has shaped your soul anew, making broken promises feel true. All the change I see in you makes me want to start anew. I’m so in love with you.
+    </p>
+  </div>
+
+  <!-- No Screen -->
+  <div id="noScreen" class="hidden">
+    <h1>💔</h1>
+    <img src="https://media.giphy.com/media/3o6Zt481isNVuQI1l6/giphy.gif" alt="Heartbroken GIF">
+  </div>
 </div>
 
 <script>
-// ---- Typing effect ----
-const lines = [
-  "Initializing feelings...",
-  "Compiling memories...",
-  "Searching for love...",
-  "Mark ❤️ HerName",
-  "Will you be mine forever?"
-];
-
-let i = 0;
-let j = 0;
-let currentLine = '';
-let messageElement = document.getElementById('message');
-
-function typeLine() {
-  if (i < lines.length) {
-    if (j < lines[i].length) {
-      currentLine += lines[i][j];
-      messageElement.innerHTML = currentLine + '|';
-      j++;
-      setTimeout(typeLine, 80);
-    } else {
-      currentLine += '<br>';
-      messageElement.innerHTML = currentLine;
-      j = 0;
-      i++;
-      setTimeout(typeLine, 500);
-    }
-  }
-}
-
-// ---- Floating hearts ----
+// ---- Floating multicolor hearts ----
 function createHeart() {
   const heart = document.createElement('div');
   heart.classList.add('heart');
   heart.style.left = Math.random() * window.innerWidth + 'px';
-  heart.style.fontSize = (10 + Math.random()*20) + 'px';
+  heart.style.fontSize = (15 + Math.random()*25) + 'px';
+  const colors = ['#ff4d6d','#ff9472','#ffcccb','#ff6b81','#ff1a3c','#ff85a2'];
+  heart.style.color = colors[Math.floor(Math.random()*colors.length)];
   heart.innerHTML = '❤️';
   document.body.appendChild(heart);
-  setTimeout(()=>heart.remove(), 4000);
+  setTimeout(()=>heart.remove(), 5000);
 }
 
-// ---- Run love program ----
-function showLove() {
-  typeLine();
+// ---- Show Question ----
+function askQuestion() {
+  document.getElementById('valentineScreen').classList.add('hidden');
+  document.getElementById('questionScreen').classList.remove('hidden');
+}
+
+// ---- Yes clicked ----
+function yesClicked() {
+  document.getElementById('questionScreen').classList.add('hidden');
+  document.getElementById('yesScreen').classList.remove('hidden');
+  // Start hearts animation
   setInterval(createHeart, 300);
+}
+
+// ---- No clicked ----
+function noClicked() {
+  document.getElementById('questionScreen').classList.add('hidden');
+  document.getElementById('noScreen').classList.remove('hidden');
 }
 </script>
 
